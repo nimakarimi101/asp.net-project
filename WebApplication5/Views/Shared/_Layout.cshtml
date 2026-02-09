@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نوآوران نرم‌افزار - @ViewData["Title"]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/style.css">
+    @RenderSection("SEO" , false)
+</head>
+
+<body class="h-full gradient-bg text-white overflow-auto">
+
+<nav class="relative z-50 glass-card sticky top-0">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <span id="site-title" class="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">نوآوران نرم‌افزار</span>
+            </div>
+            <div class="flex items-center gap-8">
+                <a asp-controller="Home" asp-action="Index" class="nav-item active px-2 py-1 text-gray-300 hover:text-white transition-colors" data-page="home">
+                    صفحه اصلی
+                </a>
+                <a asp-controller="Home" asp-action="ContactUS" class="nav-item px-2 py-1 text-gray-300 hover:text-white transition-colors" data-page="contact">
+                    تماس با ما
+                </a>
+                <a asp-controller="Home" asp-action="Privacy" class="nav-item px-2 py-1 text-gray-300 hover:text-white transition-colors" data-page="privacy">
+                    حریم خصوصی
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div>
+    @RenderBody()
+</div>
+</body>
