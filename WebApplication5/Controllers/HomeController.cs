@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApplication5.Models;
@@ -42,6 +43,18 @@ namespace WebApplication5.Controllers
         public IActionResult ContactUs()
         {
             return View();
+        }
+
+        /*[HttpPost]
+        public IActionResult ContactUs(IFormCollection form)
+        {
+            return Json(form["name"]);
+        }*/
+
+        [HttpPost]
+        public IActionResult ContactUs(Contact contact)
+        {
+            return Json(contact);
         }
     }
 }
