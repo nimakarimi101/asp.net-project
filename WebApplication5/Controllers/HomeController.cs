@@ -1,23 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using WebApplication5.Models;
 
 namespace WebApplication5.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
@@ -42,7 +30,8 @@ namespace WebApplication5.Controllers
 
         public IActionResult ContactUs()
         {
-            return View();
+            var ContactForm = new Contact();
+            return View(ContactForm);
         }
 
         /*[HttpPost]
@@ -54,7 +43,14 @@ namespace WebApplication5.Controllers
         [HttpPost]
         public IActionResult ContactUs(Contact contact)
         {
-            return Json(contact);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Error = "اطلاعات وارد شده صحیح نیست. لطفا مجددا تلاش کنید.";
+                return View( contact);
+            }
+
+            ViewBag.Success = "فرم با موفقیت ارسال شد. منتظر تماس همکاران باشید";
+            return RedirectToAction("Index");
         }
     }
 }

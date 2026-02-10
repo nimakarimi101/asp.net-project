@@ -1,3 +1,4 @@
+@model Contact
 @{
     ViewData["Title"] = "تماس با ما";
 }
@@ -5,10 +6,31 @@
 
 <section id="contact">
     <h2>تماس با ما</h2>
+    @if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Success))
+    {
+        <div class="alert alert-success">
+            @ViewBag.Success
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
     <form class="contact-form" asp-action="ContactUs">
-        <input name="name" type="text" placeholder="نام شما" required>
-        <input name="email" type="email" placeholder="ایمیل" required>
-        <textarea name="messege" placeholder="پیام شما..." required></textarea>
+        <input asp-for="Name" type="text" placeholder="نام شما">
+        <span asp-validation-for="Name"></span>
+        <input asp-for="Email" type="email" placeholder="ایمیل">
+        <span asp-validation-for="Email"></span>
+        <textarea asp-for="Messege" placeholder="پیام شما..."></textarea>
         <button type="submit" class="btn">ارسال پیام</button>
+        
     </form>
 </section>
+
+
+
+
