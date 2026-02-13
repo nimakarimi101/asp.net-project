@@ -1,0 +1,32 @@
+﻿@model RequestDemoViewModel
+<section id="contact">
+    <h2>درخواست دمو</h2>
+    @if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Success))
+    {
+        <div class="alert alert-success">
+            @ViewBag.Success
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    <form asp-action="RequestDemo" class="contact-form">
+        <input asp-for="Name" type="text" placeholder="نام و نام خانوادگی" required>
+        <span asp-validation-for="Name"></span>
+        <input asp-for="Email" type="email" placeholder="ایمیل کاری" required>
+        <span asp-validation-for="Email"></span>
+
+        <select asp-for="DemoSelected" asp-items="Model.DemoList">
+            <option value="" selected disabled>نوع سرویس درخواستی را انتخاب کنید</option>
+        </select>
+        <span asp-validation-for="DemoSelected"></span>
+        <textarea asp-for="Desc" placeholder="توضیحات تکمیلی یا سوالات شما..."></textarea>
+        
+        <button type="submit" class="btn">ثبت درخواست</button>
+    </form>
+</section>

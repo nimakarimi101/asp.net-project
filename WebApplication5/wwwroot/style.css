@@ -508,3 +508,81 @@ html, body {
     z-index: 9999;
     box-shadow: 0 8px 24px rgba(0,0,0,.2);
 }
+
+
+
+
+
+
+/*
+    RequsetDemo Style
+*/
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05); /* کمی پس‌زمینه برای خوانایی دراپ‌داون */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1.2rem;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+/* استایل اختصاصی برای گزینه‌های داخل دراپ‌داون */
+/* Select زیباتر و هماهنگ با گلس‌مورفیسم */
+.contact-form select {
+    appearance: none;          /* حذف استایل پیش‌فرض مرورگر */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.12));
+    color: #e5e7eb;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 0.75rem;
+    padding: 0.9rem 2.5rem 0.9rem 1rem;  /* فضا برای آیکن فلش */
+    font-size: 0.95rem;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 12px;
+
+    /* فلش سفارشی */
+    background-image: url("data:image/svg+xml,%3Csvg fill='white' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+}
+
+/* هاور برای حس تعاملی بهتر */
+.contact-form select:hover {
+    border-color: rgba(139, 92, 246, 0.7);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.15);
+}
+
+/* فوکوس هماهنگ با بقیه اینپوت‌ها */
+.contact-form select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.35);
+}
+
+/* گزینه‌های داخل دراپ‌داون (تم تیره‌تر و شکیل‌تر) */
+.contact-form select option {
+    background: #020617;     /* تیره‌تر از بک‌گراند فرم */
+    color: #e5e7eb;
+    padding: 10px;
+}
+
+/* وقتی روی option هاور میشه (در مرورگرهایی که پشتیبانی کنن) */
+.contact-form select option:hover {
+    background: #1e1b4b;
+}
+
+
+
+/*
+    End RequstDemo Style
+*/

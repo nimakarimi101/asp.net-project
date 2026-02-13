@@ -1,6 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.WebEncoders.Testing;
 using WebApplication5.Models;
+using WebApplication5.Services;
 
 namespace WebApplication5.Controllers
 {
@@ -46,11 +50,60 @@ namespace WebApplication5.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.Error = "اطلاعات وارد شده صحیح نیست. لطفا مجددا تلاش کنید.";
-                return View( contact);
+                return View(contact);
             }
 
             ViewBag.Success = "فرم با موفقیت ارسال شد. منتظر تماس همکاران باشید";
-            return RedirectToAction("Index");
+            ModelState.Clear();
+            return View();
+        }
+
+
+
+
+        
+
+        
+        public IActionResult RequestDemo()
+        {
+           
+
+            var _Product = new ProductService().GetSoftWareProduct();
+            var _DemoList = new List<DemoListViewModal>();
+            
+            foreach (var X in _Product)
+            {
+                _DemoList.Add(new DemoListViewModal(X.Id, X.Title));
+            }
+            var RequestDemo = new RequestDemoViewModel()
+            {
+               DemoList = new SelectList(_DemoList, "Id", "Title")
+            };
+            return View(RequestDemo);
+        }
+        [HttpPost]
+        public IActionResult RequestDemo(RequestDemoViewModel model)
+        {
+            var _DemoList = new List<DemoListViewModal>();
+            var _Product = new ProductService().GetSoftWareProduct();
+            foreach (var X in _Product)
+            {
+                _DemoList.Add(new DemoListViewModal(X.Id, X.Title));
+            }
+
+            var RequestDemo = new RequestDemoViewModel()
+            {
+                DemoList = new SelectList(_DemoList, "Id", "Title")
+            };
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Error = "لطفا مقادیر را به درستی تکمیل کنید";
+                return View(model);
+            }
+
+            ViewBag.Success = "درخواست شما ثبت شد.";
+            ModelState.Clear();
+            return View(RequestDemo);
         }
     }
 }
