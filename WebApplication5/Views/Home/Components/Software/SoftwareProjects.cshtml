@@ -24,9 +24,9 @@
         <div class="flex items-center justify-between">
             <span class="text-indigo-400 font-semibold">@item.Price</span>
 
-            <button class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors text-sm">
+            <a asp-controller="Home" asp-action="ProjectDetail" asp-route-id="@item.Id" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors text-sm">
                 بیشتر بدانید ←
-            </button>
+            </a>
         </div>
 
     </div>

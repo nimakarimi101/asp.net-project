@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace WebApplication5.Services
 {
     public class ProductService
     {
-        public List<Product> GetSoftWareProduct()
+        public static List<Product> GetSoftWareProduct()
         {
             return new List<Product>
             {
@@ -16,6 +17,11 @@ namespace WebApplication5.Services
                 new Product(6,"هاستینگ ابری", "میزبانی امن و پرسرعت با پشتیبانی ۲۴/۷", "۸۹۰ هزار تومان / ماه", "from-indigo-500 to-violet-500", "fa-solid fa-server")
 
             };
+        }
+
+        public static Product GetProductById(long id)
+        {
+            return GetSoftWareProduct().FirstOrDefault(x => x.Id == id);
         }
     }
 }

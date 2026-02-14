@@ -6,10 +6,12 @@ namespace WebApplication5.ViewComponents
 {
     public class SoftwareViewComponent : ViewComponent
     {
+        /*
         private readonly ProductService _productService = new ProductService(); 
+        */
         public IViewComponentResult Invoke()
         {
-            var products = _productService.GetSoftWareProduct();
+            var products = ProductService.GetSoftWareProduct();
             return View("SoftwareProjects", products);
         }
     }

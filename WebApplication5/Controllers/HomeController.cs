@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.WebEncoders.Testing;
 using WebApplication5.Models;
 using WebApplication5.Services;
 
@@ -66,9 +65,7 @@ namespace WebApplication5.Controllers
         
         public IActionResult RequestDemo()
         {
-           
-
-            var _Product = new ProductService().GetSoftWareProduct();
+            var _Product = ProductService.GetSoftWareProduct();
             var _DemoList = new List<DemoListViewModal>();
             
             foreach (var X in _Product)
@@ -85,7 +82,7 @@ namespace WebApplication5.Controllers
         public IActionResult RequestDemo(RequestDemoViewModel model)
         {
             var _DemoList = new List<DemoListViewModal>();
-            var _Product = new ProductService().GetSoftWareProduct();
+            var _Product = ProductService.GetSoftWareProduct();
             foreach (var X in _Product)
             {
                 _DemoList.Add(new DemoListViewModal(X.Id, X.Title));
@@ -104,6 +101,14 @@ namespace WebApplication5.Controllers
             ViewBag.Success = "درخواست شما ثبت شد.";
             ModelState.Clear();
             return View(RequestDemo);
+        }
+
+
+
+        public IActionResult ProjectDetail(long id)
+        {
+            var Product = ProductService.GetProductById(id);
+            return View(Product);
         }
     }
 }

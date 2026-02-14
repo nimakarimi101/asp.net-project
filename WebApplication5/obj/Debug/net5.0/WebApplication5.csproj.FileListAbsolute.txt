@@ -43,3 +43,4 @@ C:\Users\Nima\RiderProjects\WebApplication5\WebApplication5\obj\Debug\net5.0\Raz
 C:\Users\Nima\RiderProjects\WebApplication5\WebApplication5\obj\Debug\net5.0\Razor\Views\Home\Components\Software\SoftwareProjects.cshtml.g.cs
 C:\Users\Nima\RiderProjects\WebApplication5\WebApplication5\obj\Debug\net5.0\Razor\Views\Home\Components\Education\Education.cshtml.g.cs
 C:\Users\Nima\RiderProjects\WebApplication5\WebApplication5\obj\Debug\net5.0\Razor\Views\Home\RequestDemo.cshtml.g.cs
+C:\Users\Nima\RiderProjects\WebApplication5\WebApplication5\obj\Debug\net5.0\Razor\Views\Home\ProjectDetail.cshtml.g.cs
