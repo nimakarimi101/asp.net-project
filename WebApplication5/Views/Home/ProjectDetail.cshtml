@@ -3,6 +3,73 @@
 @{
     ViewData["Title"] = "محصولات";
 }
+<div class="max-w-6xl mx-auto py-24 px-6">
 
-@Model.Title
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- کارت محصول -->
+        <div class="glass-card rounded-3xl p-10 glow-effect">
+
+            <div class="w-20 h-20 rounded-3xl flex items-center justify-center mb-8 
+                bg-gradient-to-br @Model.GradientClass">
+                <i class="@Model.IconClass text-3xl"></i>
+            </div>
+
+            <h1 class="text-4xl font-bold mb-4">
+                @Model.Title
+            </h1>
+
+            <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                @Model.Description
+            </p>
+
+            <div class="flex items-center justify-between mt-10">
+                <span class="text-indigo-400 text-2xl font-bold">
+                    @Model.Price
+                </span>
+
+                <a asp-controller="Home" asp-action="RequestDemo"  asp-route-id="@Model.Id" 
+                   class="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 transition text-white font-semibold">
+                    درخواست دمو 🚀
+                </a>
+            </div>
+        </div>
+
+        <!-- ویژگی‌ها -->
+        <div class="space-y-6">
+
+            <h2 class="text-3xl font-bold mb-6">
+                چرا این محصول؟
+            </h2>
+
+            <div class="glass-card rounded-2xl p-6">
+                ✅ طراحی مدرن و کاربرپسند  
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+                ⚡ سرعت بالا و بهینه‌شده  
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+                🔐 امنیت و پشتیبانی حرفه‌ای  
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+                📊 گزارش‌گیری و داشبورد هوشمند  
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- دکمه بازگشت -->
+    <div class="mt-20 text-center">
+        <a asp-controller="Home" asp-action="Index"
+           class="inline-block px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition text-sm">
+            ← بازگشت به لیست محصولات
+        </a>
+    </div>
+
+</div>
+
 

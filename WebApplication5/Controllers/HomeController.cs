@@ -63,7 +63,7 @@ namespace WebApplication5.Controllers
         
 
         
-        public IActionResult RequestDemo()
+        public IActionResult RequestDemo(int? id)
         {
             var _Product = ProductService.GetSoftWareProduct();
             var _DemoList = new List<DemoListViewModal>();
@@ -72,10 +72,15 @@ namespace WebApplication5.Controllers
             {
                 _DemoList.Add(new DemoListViewModal(X.Id, X.Title));
             }
+
+            
             var RequestDemo = new RequestDemoViewModel()
             {
-               DemoList = new SelectList(_DemoList, "Id", "Title")
+               DemoList = new SelectList(_DemoList, "Id", "Title"),
+               DemoSelected = id??0
+               
             };
+            
             return View(RequestDemo);
         }
         [HttpPost]
@@ -102,6 +107,7 @@ namespace WebApplication5.Controllers
             ModelState.Clear();
             return View(RequestDemo);
         }
+        
 
 
 

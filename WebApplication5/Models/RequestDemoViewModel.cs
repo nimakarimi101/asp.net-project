@@ -18,13 +18,6 @@ namespace WebApplication5.Models
         public int DemoSelected { get; set; }
         public string Desc { get; set; }
         public SelectList DemoList { get; set; }
-        
-        /*public RequestDemoViewModal(int id, string name, string email, string desc)
-        {
-            Id = id;
-            Name = name;
-            Email = email;
-            Desc = desc;
-        }*/
+  
     }
 }

@@ -22,7 +22,7 @@
         <span asp-validation-for="Email"></span>
 
         <select asp-for="DemoSelected" asp-items="Model.DemoList">
-            <option value="" selected disabled>نوع سرویس درخواستی را انتخاب کنید</option>
+            <option value="0" selected disabled >نوع سرویس درخواستی را انتخاب کنید</option>
         </select>
         <span asp-validation-for="DemoSelected"></span>
         <textarea asp-for="Desc" placeholder="توضیحات تکمیلی یا سوالات شما..."></textarea>
