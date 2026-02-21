@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication5.Models;
-using WebApplication5.Services;
 
 namespace WebApplication5.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DBContext _dbContext; 
+        private readonly DBContext _dbContext;
+
         public HomeController(DBContext dbContext)
         {
-             _dbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         public IActionResult Index()
@@ -58,41 +59,40 @@ namespace WebApplication5.Controllers
             }
 
             ViewBag.Success = "فرم با موفقیت ارسال شد. منتظر تماس همکاران باشید";
+
+            _dbContext.Contacts.Add(contact);
+            _dbContext.SaveChanges();
+
             ModelState.Clear();
             return View();
         }
 
 
-
-
-        
-
-        
         public IActionResult RequestDemo(int? id)
         {
-            var _Product = ProductService.GetSoftWareProduct();
+            var _Product = _dbContext.Products.ToList();
             var _DemoList = new List<DemoListViewModal>();
-            
+
             foreach (var X in _Product)
             {
                 _DemoList.Add(new DemoListViewModal(X.Id, X.Title));
             }
 
-            
+
             var RequestDemo = new RequestDemoViewModel()
             {
-               DemoList = new SelectList(_DemoList, "Id", "Title"),
-               DemoSelected = id??0
-               
+                DemoList = new SelectList(_DemoList, "Id", "Title"),
+                DemoSelected = id ?? 0
             };
-            
+
             return View(RequestDemo);
         }
+
         [HttpPost]
         public IActionResult RequestDemo(RequestDemoViewModel model)
         {
             var _DemoList = new List<DemoListViewModal>();
-            var _Product = ProductService.GetSoftWareProduct();
+            var _Product = _dbContext.Products.ToList();
             foreach (var X in _Product)
             {
                 _DemoList.Add(new DemoListViewModal(X.Id, X.Title));
@@ -112,20 +112,12 @@ namespace WebApplication5.Controllers
             ModelState.Clear();
             return View(RequestDemo);
         }
-        
-
 
 
         public IActionResult ProjectDetail(long id)
         {
-            var Product = ProductService.GetProductById(id);
+            var Product = _dbContext.Products.FirstOrDefault(p => p.Id == id);
             return View(Product);
         }
-
-
-        
-
-        
-        
     }
 }

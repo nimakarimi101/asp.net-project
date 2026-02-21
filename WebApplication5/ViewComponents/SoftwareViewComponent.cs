@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication5.Services;
 
 namespace WebApplication5.ViewComponents
 {
@@ -9,9 +9,14 @@ namespace WebApplication5.ViewComponents
         /*
         private readonly ProductService _productService = new ProductService(); 
         */
+        private readonly DBContext _dbContext; 
+        public SoftwareViewComponent(DBContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public IViewComponentResult Invoke()
         {
-            var products = ProductService.GetSoftWareProduct();
+            var products = _dbContext.Products.ToList();
             return View("SoftwareProjects", products);
         }
     }
