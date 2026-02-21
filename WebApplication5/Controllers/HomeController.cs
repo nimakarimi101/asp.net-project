@@ -9,6 +9,11 @@ namespace WebApplication5.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DBContext _dbContext; 
+        public HomeController(DBContext dbContext)
+        {
+             _dbContext = dbContext;
+        }
 
         public IActionResult Index()
         {
@@ -116,5 +121,11 @@ namespace WebApplication5.Controllers
             var Product = ProductService.GetProductById(id);
             return View(Product);
         }
+
+
+        
+
+        
+        
     }
 }
